@@ -20,7 +20,7 @@ void Game::run()
 
 	while (isRunning){
 
-		cout << "Game running..." << endl;
+		//cout << "Game running..." << endl;
 
 		while (window.pollEvent(event))
 		{
@@ -52,49 +52,41 @@ void Game::initialize()
 	glNewList(index, GL_COMPILE);
 	glBegin(GL_QUADS);
 	{
-		
+		for (int x = 0; x < 4; x++)
+		{
+			glColor3f(0.0f, 1.0f, 0.0f);
+			glVertex3f(faces[0][x].x, faces[0][x].y, faces[0][x].z);
+		}
 
-		//Back Face
-		glColor3f(0.0f, 1.0f, 0.0f);
-		glVertex3f(1.0f, 1.0f, -15.0f);
-		glVertex3f(-1.0f, 1.0f, -15.0f);
-		glVertex3f(-1.0f, -1.0f, -15.0f);
-		glVertex3f(1.0f, -1.0f, -15.0f);
+		for (int x = 0; x < 4; x++)
+		{
+			glColor3f(1.0f, 0.0f, 0.0f);
+			glVertex3f(faces[1][x].x, faces[1][x].y, faces[1][x].z);
+		}
 
-		//left face
-		glColor3f(1.0f, 0.0f, 0.0f);
-		glVertex3f(-1.0f, 1.0f, -5.0f);
-		glVertex3f(-1.0f, 1.0f, -15.0f);
-		glVertex3f(-1.0f, -1.0f, -15.0f);
-		glVertex3f(-1.0f, -1.0f, -5.0f);
+		for (int x = 0; x < 4; x++)
+		{
+			glColor3f(1.0f, 1.0f, 0.0f);
+			glVertex3f(faces[2][x].x, faces[2][x].y, faces[2][x].z);
+		}
 
-		//right face
-		glColor3f(1.0f, 1.0f, 0.0f);
-		glVertex3f(1.0f, 1.0f, -5.0f);
-		glVertex3f(1.0f, 1.0f, -15.0f);
-		glVertex3f(1.0f, -1.0f, -15.0f);
-		glVertex3f(1.0f, -1.0f, -5.0f);
+		for (int x = 0; x < 4; x++)
+		{
+			glColor3f(1.0f, 0.0f, 1.0f);
+			glVertex3f(faces[3][x].x, faces[3][x].y, faces[3][x].z);
+		}
 
-		//bottom face
-		glColor3f(1.0f, 0.0f, 1.0f);
-		glVertex3f(1.0f, -1.0f, -5.0f);
-		glVertex3f(-1.0f, -1.0f, -5.0f);
-		glVertex3f(-1.0f, -1.0f, -15.0f);
-		glVertex3f(1.0f, -1.0f, -15.0f);
+		for (int x = 0; x < 4; x++)
+		{
+			glColor3f(0.0f, 1.0f, 1.0f);
+			glVertex3f(faces[4][x].x, faces[4][x].y, faces[4][x].z);
+		}
 
-		//top face
-		glColor3f(0.0f, 1.0f, 1.0f);
-		glVertex3f(1.0f, 1.0f, -5.0f);
-		glVertex3f(-1.0f, 1.0f, -5.0f);
-		glVertex3f(-1.0f, 1.0f, -15.0f);
-		glVertex3f(1.0f, 1.0f, -15.0f);
-
-		//Front Face
-		glColor3f(0.0f, 0.0f, 1.0f);
-		glVertex3f(1.0f, 1.0f, -5.0f);
-		glVertex3f(-1.0f, 1.0f, -5.0f);
-		glVertex3f(-1.0f, -1.0f, -5.0f);
-		glVertex3f(1.0f, -1.0f, -5.0f);
+		for (int x = 0; x < 4; x++)
+		{
+			glColor3f(0.0f, 0.0f, 1.0f);
+			glVertex3f(faces[5][x].x, faces[5][x].y, faces[5][x].z);
+		}
 	}
 	glEnd();
 	glEndList();
@@ -118,6 +110,48 @@ void Game::update()
 
 	if (updatable)
 	{
+		glNewList(index, GL_COMPILE);
+		glBegin(GL_QUADS);
+		{
+			for (int x = 0; x < 4; x++)
+			{
+				glColor3f(0.0f, 1.0f, 0.0f);
+				glVertex3f(faces[0][x].x, faces[0][x].y, faces[0][x].z);
+			}
+
+			for (int x = 0; x < 4; x++)
+			{
+				glColor3f(1.0f, 0.0f, 0.0f);
+				glVertex3f(faces[1][x].x, faces[1][x].y, faces[1][x].z);
+			}
+
+			for (int x = 0; x < 4; x++)
+			{
+				glColor3f(1.0f, 1.0f, 0.0f);
+				glVertex3f(faces[2][x].x, faces[2][x].y, faces[2][x].z);
+			}
+
+			for (int x = 0; x < 4; x++)
+			{
+				glColor3f(1.0f, 0.0f, 1.0f);
+				glVertex3f(faces[3][x].x, faces[3][x].y, faces[3][x].z);
+			}
+
+			for (int x = 0; x < 4; x++)
+			{
+				glColor3f(0.0f, 1.0f, 1.0f);
+				glVertex3f(faces[4][x].x, faces[4][x].y, faces[4][x].z);
+			}
+
+			for (int x = 0; x < 4; x++)
+			{
+				glColor3f(0.0f, 0.0f, 1.0f);
+				glVertex3f(faces[5][x].x, faces[5][x].y, faces[5][x].z);
+			}
+		}
+		glEnd();
+		glEndList();
+
 		rotationAngle += 0.005f;
 
 		if (rotationAngle > 360.0f)
@@ -126,16 +160,16 @@ void Game::update()
 		}
 	}
 	
-	cout << "Update up" << endl;
+	//cout << "Update up" << endl;
 }
 
 void Game::draw()
 {
-	cout << "Drawing" << endl;
+//	cout << "Drawing" << endl;
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	cout << "Drawing Cube " << endl;
+	//cout << "Drawing Cube " << endl;
 	glLoadIdentity();
 	glRotatef(rotationAngle, 0, 0, 1); // Rotates the camera on Y Axis
 
@@ -147,6 +181,6 @@ void Game::draw()
 
 void Game::unload()
 {
-	cout << "Cleaning up" << endl;
+//	cout << "Cleaning up" << endl;
 }
 
