@@ -213,5 +213,5 @@ MyMatrix3 MyMatrix3::scale(const double t_scalingfactor)
 	return MyMatrix3{
 		t_scalingfactor, 0.0 , 0.0,
 		0.0 ,t_scalingfactor, 0.0,
-		0.0 , 0.0 ,t_scalingfactor };
+		0.0 , 0.0 , 1 };
 }

@@ -82,11 +82,11 @@ void Game::initialize()
 			glVertex3f(faces[4][x].x, faces[4][x].y, faces[4][x].z);
 		}
 
-		/*for (int x = 0; x < 4; x++)
+		for (int x = 0; x < 4; x++)
 		{
 			glColor3f(0.0f, 0.0f, 1.0f);
 			glVertex3f(faces[5][x].x, faces[5][x].y, faces[5][x].z);
-		}*/
+		}
 	}
 	glEnd();
 	glEndList();
@@ -116,54 +116,254 @@ void Game::update()
 			for (int x = 0; x < 4; x++)
 			{
 				glColor3f(0.0f, 1.0f, 0.0f);
-				faces[0][x] = MyMatrix3::rotationZ(rotationAngle) * MyVector3(faces[0][x].x, faces[0][x].y, faces[0][x].z);
-				//faces[0][x] = MyMatrix3::translation(MyVector3(-1,0,0)) * MyVector3(faces[0][x].x, faces[0][x].y, faces[0][x].z);
-				//faces[0][x] = MyMatrix3::scale(2) * MyVector3(faces[0][x].x, faces[0][x].y, faces[0][x].z);
+
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+				{
+					faces[0][x] = MyMatrix3::rotationZ(rotationAngle) * MyVector3(faces[0][x].x, faces[0][x].y, faces[0][x].z);
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+				{
+					faces[0][x] = MyMatrix3::rotationZ(-rotationAngle) * MyVector3(faces[0][x].x, faces[0][x].y, faces[0][x].z);
+				}
+
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+				{
+					faces[0][x] = MyMatrix3::rotationX(rotationAngle) * MyVector3(faces[0][x].x, faces[0][x].y, faces[0][x].z);
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+				{
+					faces[0][x] = MyMatrix3::rotationX(-rotationAngle) * MyVector3(faces[0][x].x, faces[0][x].y, faces[0][x].z);
+				}
+
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+				{
+					faces[0][x] = MyMatrix3::translation(MyVector3(0.001, 0.0, 0.0)) * MyVector3(faces[0][x].x, faces[0][x].y, faces[0][x].z);
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+				{
+					faces[0][x] = MyMatrix3::translation(MyVector3(-0.001, 0.0, 0.0)) * MyVector3(faces[0][x].x, faces[0][x].y, faces[0][x].z);
+				}
+
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+				{
+					faces[0][x] = MyMatrix3::scale(1.01) * MyVector3(faces[0][x].x, faces[0][x].y, faces[0][x].z);
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+				{
+					faces[0][x] = MyMatrix3::scale(0.99) * MyVector3(faces[0][x].x, faces[0][x].y, faces[0][x].z);
+				}
+
 				glVertex3f(faces[0][x].x, faces[0][x].y, faces[0][x].z);
 			}
 
 			for (int x = 0; x < 4; x++)
 			{
 				glColor3f(1.0f, 0.0f, 0.0f);
-				faces[1][x] = MyMatrix3::rotationZ(rotationAngle) * MyVector3(faces[1][x].x, faces[1][x].y, faces[1][x].z);
-				//faces[1][x] = MyMatrix3::translation(MyVector3(-1, 0, 0)) * MyVector3(faces[1][x].x, faces[1][x].y, faces[1][x].z);
-				//faces[1][x] = MyMatrix3::scale(2) * MyVector3(faces[1][x].x, faces[1][x].y, faces[1][x].z);
+				
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+				{
+					faces[1][x] = MyMatrix3::rotationZ(rotationAngle) * MyVector3(faces[1][x].x, faces[1][x].y, faces[1][x].z);
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+				{
+					faces[1][x] = MyMatrix3::rotationZ(-rotationAngle) * MyVector3(faces[1][x].x, faces[1][x].y, faces[1][x].z);
+				}
+
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+				{
+					faces[1][x] = MyMatrix3::rotationX(rotationAngle) * MyVector3(faces[1][x].x, faces[1][x].y, faces[1][x].z);
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+				{
+					faces[1][x] = MyMatrix3::rotationX(-rotationAngle) * MyVector3(faces[1][x].x, faces[1][x].y, faces[1][x].z);
+				}
+
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+				{
+					faces[1][x] = MyMatrix3::translation(MyVector3(0.001, 0.0, 0.0)) * MyVector3(faces[1][x].x, faces[1][x].y, faces[1][x].z);
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+				{
+					faces[1][x] = MyMatrix3::translation(MyVector3(-0.001, 0.0, 0.0)) * MyVector3(faces[1][x].x, faces[1][x].y, faces[1][x].z);
+				}
+
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+				{
+					faces[1][x] = MyMatrix3::scale(1.01) * MyVector3(faces[1][x].x, faces[1][x].y, faces[1][x].z);
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+				{
+					faces[1][x] = MyMatrix3::scale(0.99) * MyVector3(faces[1][x].x, faces[1][x].y, faces[1][x].z);
+				}
+
 				glVertex3f(faces[1][x].x, faces[1][x].y, faces[1][x].z);
 			}
 
 			for (int x = 0; x < 4; x++)
 			{
 				glColor3f(1.0f, 1.0f, 0.0f);
-				faces[2][x] = MyMatrix3::rotationZ(rotationAngle) * MyVector3(faces[2][x].x, faces[2][x].y, faces[2][x].z);
-				//faces[2][x] = MyMatrix3::translation(MyVector3(-1, 0, 0)) * MyVector3(faces[2][x].x, faces[2][x].y, faces[2][x].z);
-				//faces[2][x] = MyMatrix3::scale(2) * MyVector3(faces[2][x].x, faces[2][x].y, faces[2][x].z);
+				
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+				{
+					faces[2][x] = MyMatrix3::rotationZ(rotationAngle) * MyVector3(faces[2][x].x, faces[2][x].y, faces[2][x].z);
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+				{
+					faces[2][x] = MyMatrix3::rotationZ(-rotationAngle) * MyVector3(faces[2][x].x, faces[2][x].y, faces[2][x].z);
+				}
+
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+				{
+					faces[2][x] = MyMatrix3::rotationX(rotationAngle) * MyVector3(faces[2][x].x, faces[2][x].y, faces[2][x].z);
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+				{
+					faces[2][x] = MyMatrix3::rotationX(-rotationAngle) * MyVector3(faces[2][x].x, faces[2][x].y, faces[2][x].z);
+				}
+
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+				{
+					faces[2][x] = MyMatrix3::translation(MyVector3(0.001, 0.0, 0.0)) * MyVector3(faces[2][x].x, faces[2][x].y, faces[2][x].z);
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+				{
+					faces[2][x] = MyMatrix3::translation(MyVector3(-0.001, 0.0, 0.0)) * MyVector3(faces[2][x].x, faces[2][x].y, faces[2][x].z);
+				}
+
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+				{
+					faces[2][x] = MyMatrix3::scale(1.01) * MyVector3(faces[2][x].x, faces[2][x].y, faces[2][x].z);
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+				{
+					faces[2][x] = MyMatrix3::scale(0.99) * MyVector3(faces[2][x].x, faces[2][x].y, faces[2][x].z);
+				}
 				glVertex3f(faces[2][x].x, faces[2][x].y, faces[2][x].z);
 			}
 
 			for (int x = 0; x < 4; x++)
 			{
 				glColor3f(1.0f, 0.0f, 1.0f);
-				faces[3][x] = MyMatrix3::rotationZ(rotationAngle) * MyVector3(faces[3][x].x, faces[3][x].y, faces[3][x].z);
-				//faces[3][x] = MyMatrix3::translation(MyVector3(-1, 0, 0)) * MyVector3(faces[3][x].x, faces[3][x].y, faces[3][x].z);
-				//faces[3][x] = MyMatrix3::scale(2) * MyVector3(faces[3][x].x, faces[3][x].y, faces[3][x].z);
+				
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+				{
+					faces[3][x] = MyMatrix3::rotationZ(rotationAngle) * MyVector3(faces[3][x].x, faces[3][x].y, faces[3][x].z);
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+				{
+					faces[3][x] = MyMatrix3::rotationZ(-rotationAngle) * MyVector3(faces[3][x].x, faces[3][x].y, faces[3][x].z);
+				}
+
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+				{
+					faces[3][x] = MyMatrix3::rotationX(rotationAngle) * MyVector3(faces[3][x].x, faces[3][x].y, faces[3][x].z);
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+				{
+					faces[3][x] = MyMatrix3::rotationX(-rotationAngle) * MyVector3(faces[3][x].x, faces[3][x].y, faces[3][x].z);
+				}
+
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+				{
+					faces[3][x] = MyMatrix3::translation(MyVector3(0.001, 0.0, 0.0)) * MyVector3(faces[3][x].x, faces[3][x].y, faces[3][x].z);
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+				{
+					faces[3][x] = MyMatrix3::translation(MyVector3(-0.001, 0.0, 0.0)) * MyVector3(faces[3][x].x, faces[3][x].y, faces[3][x].z);
+				}
+
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+				{
+					faces[3][x] = MyMatrix3::scale(1.01) * MyVector3(faces[3][x].x, faces[3][x].y, faces[3][x].z);
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+				{
+					faces[3][x] = MyMatrix3::scale(0.99) * MyVector3(faces[3][x].x, faces[3][x].y, faces[3][x].z);
+				}
 				glVertex3f(faces[3][x].x, faces[3][x].y, faces[3][x].z);
 			}
 
 			for (int x = 0; x < 4; x++)
 			{
 				glColor3f(0.0f, 1.0f, 1.0f);
-				faces[4][x] = MyMatrix3::rotationZ(rotationAngle) * MyVector3(faces[4][x].x, faces[4][x].y, faces[4][x].z);
-				//faces[4][x] = MyMatrix3::translation(MyVector3(-1, 0, 0)) * MyVector3(faces[4][x].x, faces[4][x].y, faces[4][x].z);
-				//faces[4][x] = MyMatrix3::scale(2) * MyVector3(faces[4][x].x, faces[4][x].y, faces[4][x].z);
+
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+				{
+					faces[4][x] = MyMatrix3::rotationZ(rotationAngle) * MyVector3(faces[4][x].x, faces[4][x].y, faces[4][x].z);
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+				{
+					faces[4][x] = MyMatrix3::rotationZ(-rotationAngle) * MyVector3(faces[4][x].x, faces[4][x].y, faces[4][x].z);
+				}
+				
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+				{
+					faces[4][x] = MyMatrix3::rotationX(rotationAngle) * MyVector3(faces[4][x].x, faces[4][x].y, faces[4][x].z);
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+				{
+					faces[4][x] = MyMatrix3::rotationX(-rotationAngle) * MyVector3(faces[4][x].x, faces[4][x].y, faces[4][x].z);
+				}
+
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+				{
+					faces[4][x] = MyMatrix3::translation(MyVector3(0.001, 0.0, 0.0)) * MyVector3(faces[4][x].x, faces[4][x].y, faces[4][x].z);
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+				{
+					faces[4][x] = MyMatrix3::translation(MyVector3(-0.001, 0.0, 0.0)) * MyVector3(faces[4][x].x, faces[4][x].y, faces[4][x].z);
+				}
+
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+				{
+					faces[4][x] = MyMatrix3::scale(1.01) * MyVector3(faces[4][x].x, faces[4][x].y, faces[4][x].z);
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+				{
+					faces[4][x] = MyMatrix3::scale(0.99) * MyVector3(faces[4][x].x, faces[4][x].y, faces[4][x].z);
+				}
 				glVertex3f(faces[4][x].x, faces[4][x].y, faces[4][x].z);
 			}
 
 			for (int x = 0; x < 4; x++)
 			{
 				glColor3f(0.0f, 0.0f, 1.0f);
-				faces[5][x] = MyMatrix3::rotationZ(rotationAngle) * MyVector3(faces[5][x].x, faces[5][x].y, faces[5][x].z);
-			//	//faces[5][x] = MyMatrix3::translation(MyVector3(-1,0,0)) * MyVector3(faces[5][x].x, faces[5][x].y, faces[5][x].z);
-			//  //faces[5][x] = MyMatrix3::scale(2) * MyVector3(faces[5][x].x, faces[5][x].y, faces[5][x].z);
+
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+				{
+					faces[5][x] = MyMatrix3::rotationZ(rotationAngle) * MyVector3(faces[5][x].x, faces[5][x].y, faces[5][x].z);
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+				{
+					faces[5][x] = MyMatrix3::rotationZ(-rotationAngle) * MyVector3(faces[5][x].x, faces[5][x].y, faces[5][x].z);
+				}
+
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+				{
+					faces[5][x] = MyMatrix3::rotationX(rotationAngle) * MyVector3(faces[5][x].x, faces[5][x].y, faces[5][x].z);
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+				{
+					faces[5][x] = MyMatrix3::rotationX(-rotationAngle) * MyVector3(faces[5][x].x, faces[5][x].y, faces[5][x].z);
+				}
+
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+				{
+					faces[5][x] = MyMatrix3::translation(MyVector3(0.001, 0.0, 0.0)) * MyVector3(faces[5][x].x, faces[5][x].y, faces[5][x].z);
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+				{
+					faces[5][x] = MyMatrix3::translation(MyVector3(-0.001, 0.0, 0.0)) * MyVector3(faces[5][x].x, faces[5][x].y, faces[5][x].z);
+				}
+
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+				{
+					faces[5][x] = MyMatrix3::scale(1.01) * MyVector3(faces[5][x].x, faces[5][x].y, faces[5][x].z);
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+				{
+					faces[5][x] = MyMatrix3::scale(0.99) * MyVector3(faces[5][x].x, faces[5][x].y, faces[5][x].z);
+				}
 				glVertex3f(faces[5][x].x, faces[5][x].y, faces[5][x].z);
 			}
 		}
@@ -171,11 +371,6 @@ void Game::update()
 		glEndList();
 
 		rotationAngle = 0.0005f;
-
-		if (rotationAngle > 360.0f)
-		{
-			rotationAngle -= 360.0f;
-		}
 	}
 	
 	//cout << "Update up" << endl;
